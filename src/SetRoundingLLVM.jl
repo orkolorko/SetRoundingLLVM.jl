@@ -33,7 +33,7 @@ function from_llvm(x::Int32)
 end 
 
 """
-    llvm_get_rounding()
+    llvm_rounding()
 
 Return the current rounding mode for Float64
 
@@ -41,11 +41,19 @@ Return the current rounding mode for Float64
 llvm_rounding() = from_llvm(ccall("llvm.flt.rounds", llvmcall, Int32, () ))
 
 """
-    llvm_set_rounding(round::RoundingMode)    
+    llvm_setrounding(round::RoundingMode)    
 
 Set the rounding mode of Float64, controlling the rounding of basic arithmetic functions (+,
 -, *, / and sqrt) and type conversion. Other numerical functions may give incorrect or invalid values when
 using rounding modes other than the default RoundNearest
+
+Available modes are:
+
+* RoundToZero
+* RoundNearest
+* RoundUp
+* RoundDown
+
 """
 llvm_setrounding(rounding::RoundingMode) = ccall("llvm.set.rounding", llvmcall, Cvoid, (Int32, ), to_llvm(rounding))
 
