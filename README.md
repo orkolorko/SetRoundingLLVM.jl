@@ -13,6 +13,7 @@ routine to compute enclosures of matrix multiplication.
 
 One feature of the LLVM intrinsic is that they can be used to 
 set the rounding mode on AMDGPU; it may be worth investigating this direction.
+[Discussion at LLVM: Intrinsic for setting rounding mode](https://reviews.llvm.org/D74729)
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://orkolorko.github.io/SetRoundingLLVM.jl/stable/)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://orkolorko.github.io/SetRoundingLLVM.jl/dev/)
