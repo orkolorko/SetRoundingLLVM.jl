@@ -71,6 +71,7 @@ end
 
 @testset "Testing multithreading" begin
     N = Threads.nthreads()
+    @info "Number of threads is $N"
 
     if N>1
         function testing_roundings_up(rounding::RoundingMode)

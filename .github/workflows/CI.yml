@@ -15,7 +15,7 @@ jobs:
     name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ github.event_name }}
     runs-on: ${{ matrix.os }}
     env:
-        JULIA_NUM_THREADS: 4
+        JULIA_NUM_THREADS: 32
     strategy:
       fail-fast: false
       matrix:
@@ -29,9 +29,6 @@ jobs:
         arch:
           - x64
     steps:
-      - name: WindowsEnv
-        if: runner.os == 'Windows'
-        run: $env:JULIA_NUM_THREADS = $JULIA_NUM_THREADS
       - uses: actions/checkout@v2
       - uses: julia-actions/setup-julia@v1
         with:
