@@ -72,44 +72,46 @@ end
 @testset "Testing multithreading" begin
     N = Threads.nthreads()
 
-    function testing_roundings_up(rounding::RoundingMode)
-        x = 1.0
-        x = llvm_setrounding(rounding) do
+    if N>1
+        function testing_roundings_up(rounding::RoundingMode)
+            x = 1.0
+            x = llvm_setrounding(rounding) do
             x+eps(1.0)/2
+            end
+            return x
         end
-        return x
-    end
 
-    function testing_roundings_down(rounding::RoundingMode)
-        x = 1.0
-        x = llvm_setrounding(rounding) do
+        function testing_roundings_down(rounding::RoundingMode)
+            x = 1.0
+            x = llvm_setrounding(rounding) do
             x-eps(1.0)/4
+            end
+            return x
         end
-        return x
-    end
 
 
-    a = SetRoundingLLVM.from_llvm.([Int32(i%4) for i in 1:N])
+        a = SetRoundingLLVM.from_llvm.([Int32(i%4) for i in 1:N])
 
-    v = zeros(N)
-    Threads.@threads for i = 1:N
-        v[Threads.threadid()] = testing_roundings_up(a[Threads.threadid()])
-    end
+        v = zeros(N)
+        Threads.@threads for i = 1:N
+            v[Threads.threadid()] = testing_roundings_up(a[Threads.threadid()])
+        end
 
-    @test all(v[[i%4==1 for i in 1:N]] .== 1.0) #Nearest 
-    @test all(v[[i%4==2 for i in 1:N]] .== nextfloat(1.0)) #Up 
-    @test all(v[[i%4==3 for i in 1:N]] .== 1.0) #Down
-    @test all(v[[i%4==0 for i in 1:N]] .== 1.0) #ToZero
+        @test all(v[[i%4==1 for i in 1:N]] .== 1.0) #Nearest 
+        @test all(v[[i%4==2 for i in 1:N]] .== nextfloat(1.0)) #Up 
+        @test all(v[[i%4==3 for i in 1:N]] .== 1.0) #Down
+        @test all(v[[i%4==0 for i in 1:N]] .== 1.0) #ToZero
 
-    v = zeros(N)
-    Threads.@threads for i = 1:N
-        v[Threads.threadid()] = testing_roundings_down(a[Threads.threadid()])
-    end
+        v = zeros(N)
+        Threads.@threads for i = 1:N
+            v[Threads.threadid()] = testing_roundings_down(a[Threads.threadid()])
+        end
     
-    @test all(v[[i%4==1 for i in 1:N]] .== 1.0) #Nearest 
-    @test all(v[[i%4==2 for i in 1:N]] .== 1.0) #Up 
-    @test all(v[[i%4==3 for i in 1:N]] .== prevfloat(1.0)) #Down
-    @test all(v[[i%4==0 for i in 1:N]] .== prevfloat(1.0)) #ToZero
+        @test all(v[[i%4==1 for i in 1:N]] .== 1.0) #Nearest 
+        @test all(v[[i%4==2 for i in 1:N]] .== 1.0) #Up 
+        @test all(v[[i%4==3 for i in 1:N]] .== prevfloat(1.0)) #Down
+        @test all(v[[i%4==0 for i in 1:N]] .== prevfloat(1.0)) #ToZero
+    end
 end
 
 @testset "Testing using external Linear Algebra library" begin
