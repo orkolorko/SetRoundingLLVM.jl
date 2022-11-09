@@ -29,6 +29,9 @@ jobs:
         arch:
           - x64
     steps:
+      - name: WindowsEnv
+        if: runner.os == 'Windows'
+        run: $env:JULIA_NUM_THREADS = $JULIA_NUM_THREADS
       - uses: actions/checkout@v2
       - uses: julia-actions/setup-julia@v1
         with:
