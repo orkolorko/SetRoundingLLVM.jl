@@ -3,6 +3,9 @@ uuid = "259bb760-bc25-474b-814a-89aa0a9f335c"
 authors = ["Isaia Nisoli nisoli@im.ufrj.br and contributors"]
 version = "0.1.0"
 
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
 [compat]
 julia = "1"
 
