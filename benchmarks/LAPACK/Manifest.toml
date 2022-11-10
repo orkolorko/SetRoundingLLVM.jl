@@ -1,0 +1,12 @@
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.8.0"
+manifest_format = "2.0"
+project_hash = "f8a31aefee6ec43bd090d0d63f4d31d4af30eb8d"
+
+[[deps.SetRoundingLLVM]]
+git-tree-sha1 = "1c171f10fd7db3acded66ae50cd6fd9742b309d7"
+repo-rev = "main"
+repo-url = "https://github.com/orkolorko/SetRoundingLLVM.jl"
+uuid = "259bb760-bc25-474b-814a-89aa0a9f335c"
+version = "0.1.0"

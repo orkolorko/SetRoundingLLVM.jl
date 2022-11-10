@@ -1,0 +1,39 @@
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.8.0"
+manifest_format = "2.0"
+project_hash = "5aa5c16560e550e17b0ba795f41dd64eb8682d2a"
+
+[[deps.ExprTools]]
+git-tree-sha1 = "56559bbef6ca5ea0c0818fa5c90320398a6fbf8d"
+uuid = "e2ba6199-217a-4e67-a87a-7c52f15ade04"
+version = "0.1.8"
+
+[[deps.Printf]]
+deps = ["Unicode"]
+uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+
+[[deps.RoundingEmulator]]
+git-tree-sha1 = "785e5ea47c7cdad93e52f1fe1006bbd23b026f4d"
+repo-rev = "master"
+repo-url = "https://github.com/matsueushi/RoundingEmulator.jl"
+uuid = "5eaf0fd0-dfba-4ccb-bf02-d820a40db705"
+version = "0.2.1"
+
+[[deps.SetRoundingLLVM]]
+git-tree-sha1 = "1c171f10fd7db3acded66ae50cd6fd9742b309d7"
+repo-rev = "main"
+repo-url = "https://github.com/orkolorko/SetRoundingLLVM.jl"
+uuid = "259bb760-bc25-474b-814a-89aa0a9f335c"
+version = "0.1.0"
+
+[[deps.TimerOutputs]]
+deps = ["ExprTools", "Printf"]
+git-tree-sha1 = "f2fd3f288dfc6f507b0c3a2eb3bac009251e548b"
+repo-rev = "master"
+repo-url = "https://github.com/KristofferC/TimerOutputs.jl"
+uuid = "a759f4b9-e2f1-59dc-863e-4aeb61b1ea8f"
+version = "0.5.22"
+
+[[deps.Unicode]]
+uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"

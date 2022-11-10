@@ -54,4 +54,17 @@ using Test
     end
     @test x == 1.0
 
+    a = 0.1; b = 0.3
+
+    c = llvm_setrounding(RoundDown) do
+        a + b
+    end
+
+    d = llvm_setrounding(RoundUp) do
+        a + b
+    end
+
+    @test c == 0.39999999999999997
+    @test d == 0.4
+
 end
