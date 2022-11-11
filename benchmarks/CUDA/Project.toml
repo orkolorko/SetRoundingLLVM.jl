@@ -1,5 +1,3 @@
 [deps]
+CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
 SetRoundingLLVM = "259bb760-bc25-474b-814a-89aa0a9f335c"
-
-[compat]
-julia = "1.8"
