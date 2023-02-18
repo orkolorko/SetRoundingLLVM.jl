@@ -67,4 +67,12 @@ function llvm_setrounding(f::Function, rounding::RoundingMode)
     end
 end
 
+function __init__()
+    if Sys.iswindows()
+        @warn "The multithread behavior is not guaranteed"
+    else 
+        @info "Multithread tests run fine on this platform"
+    end
+end
+
 end
